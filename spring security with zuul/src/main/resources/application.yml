@@ -1,0 +1,23 @@
+security:
+  oauth2:
+    resource:
+      filter-order: 3
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+server:
+  port: 8769
+spring:
+  application:
+    name: service-auth
+zuul:
+  routes:
+    api-b:
+      path: /api-b/**
+      serviceId: service-feign
+    api-c:
+      service-node: /node/**
+    app-sidecar:
+      path=/sidecar/**
+      service-id=sidecar
